@@ -77,7 +77,7 @@ const PaginaDetalle: React.FC = () => {
         <div className={"episodios-grilla"}>
             {
                 personaje.episode.map(episode => (
-                    <TarjetaEpisodio episode={episode}/>
+                    <TarjetaEpisodio key={episode} episode={episode}/>
                 ))
             }
         </div>
