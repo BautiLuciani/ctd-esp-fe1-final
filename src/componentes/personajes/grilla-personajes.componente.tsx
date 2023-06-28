@@ -21,9 +21,12 @@ const GrillaPersonajes = () => {
     const error = useAppSelector(state => state.characters.error)
     const pageNum = useAppSelector(state => state.characters.pageNum)
     const filter = useAppSelector(state => state.characters.filter)
+    const favPersonajes = useAppSelector(state => state.fav.favPersonajes)
+
+    const url = window.location.pathname
 
     useEffect(() => {
-        if(filter){
+        if (filter) {
             dispatch(getPersonajes({ page: pageNum, name: filter }))
         } else {
             dispatch(getPersonajes({ page: pageNum }))
@@ -41,9 +44,17 @@ const GrillaPersonajes = () => {
     return (
         <div className="grilla-personajes">
             {
-                personajes.map((personaje: IPersonajes) => (
-                    <TarjetaPersonaje key={personaje.id} personaje={personaje} />
-                ))
+                (url === '/favoritos')
+                    ? (
+                        favPersonajes.map((personaje: IPersonajes) => (
+                            <TarjetaPersonaje key={personaje.id} personaje={personaje} />
+                        ))
+                    )
+                    : (
+                        personajes.map((personaje: IPersonajes) => (
+                            <TarjetaPersonaje key={personaje.id} personaje={personaje} />
+                        ))
+                    )
             }
         </div>
     )

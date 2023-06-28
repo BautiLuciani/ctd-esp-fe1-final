@@ -2,24 +2,29 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import IPersonajes from "../interfaces/personajes";
 
 interface IState {
-    data: IPersonajes[]
+    favPersonajes: IPersonajes[]
 }
 
-const initialState: IState = {data: []}
+const initialState: IState = {
+    favPersonajes: []
+}
 
 const favSlice = createSlice({
     name: 'fav',
     initialState,
     reducers: {
         agregarFav: (state, action: PayloadAction<IPersonajes>)=>{
-            state.data.push(action.payload)
+            state.favPersonajes.push(action.payload)
         },
-        eliminarFav: (state, action: PayloadAction<IPersonajes>)=>{
-            state.data.filter(personaje => personaje.id !== action.payload.id)
+        eliminarFav: (state, action: PayloadAction<number>)=>{
+            state.favPersonajes = state.favPersonajes.filter(personaje => personaje.id !== action.payload)
+        },
+        limpiarFav: (state) => {
+            state.favPersonajes = []
         }
     }
 })
 
-export const { agregarFav, eliminarFav } = favSlice.actions
+export const { agregarFav, eliminarFav, limpiarFav } = favSlice.actions
 
 export default favSlice.reducer

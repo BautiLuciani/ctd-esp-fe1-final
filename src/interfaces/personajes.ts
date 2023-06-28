@@ -1,5 +1,5 @@
 interface IPersonajes {
-    id: string,
+    id: number,
     name: string,
     image: string,
     episode: string[]

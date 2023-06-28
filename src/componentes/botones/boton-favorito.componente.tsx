@@ -17,8 +17,8 @@ const BotonFavorito: React.FC<BotonFavoritoProps> = ({ esFavorito, onClick }) =>
     const src = esFavorito ? "/imagenes/star-filled.png" : "/imagenes/star.png"
 
     return (
-        <div className="boton-favorito" >
-            <img src={src} alt={"favorito"} onClick={ onClick }/>
+        <div className="boton-favorito" onClick={ onClick }>
+            <img src={src} alt={"favorito"}/>
         </div>
     )
 }

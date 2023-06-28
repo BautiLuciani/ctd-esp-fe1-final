@@ -20,14 +20,14 @@ interface TarjetaPersonajeProps {
 const TarjetaPersonaje: React.FC<TarjetaPersonajeProps> = ({ personaje }) => {
 
     const dispatch = useAppDispatch()
-    const personajesFavoritos = useAppSelector(state => state.fav.data)
+    const favoritos = useAppSelector(state => state.fav.favPersonajes)
 
-    const esFavorito = personajesFavoritos.some(favorito => favorito.id === personaje.id)
+    const esFavorito = favoritos.some(fav => fav.id === personaje.id)
 
     const onToggleFavorito = () => {
 
         if(esFavorito){
-            dispatch(eliminarFav(personaje))
+            dispatch(eliminarFav(personaje.id))
         } else {
             dispatch(agregarFav(personaje))
         }
