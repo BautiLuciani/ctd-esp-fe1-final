@@ -46,9 +46,15 @@ const GrillaPersonajes = () => {
             {
                 (url === '/favoritos')
                     ? (
-                        favPersonajes.map((personaje: IPersonajes) => (
-                            <TarjetaPersonaje key={personaje.id} personaje={personaje} />
-                        ))
+                        (favPersonajes.length === 0)
+                            ? (
+                                <div><h1>No hay favoritos aun</h1></div>
+                            )
+                            : (
+                                favPersonajes.map((personaje: IPersonajes) => (
+                                    <TarjetaPersonaje key={personaje.id} personaje={personaje} />
+                                ))
+                            )
                     )
                     : (
                         personajes.map((personaje: IPersonajes) => (

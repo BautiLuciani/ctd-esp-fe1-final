@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import BotonFavorito from '../botones/boton-favorito.componente';
 import './tarjeta-personaje.css';
 import { agregarFav, eliminarFav } from '../../store/favSlice';
+import { Link } from 'react-router-dom';
 
 /**
  * Tarjeta para cada personaje dentro de la grilla de personajes. 
@@ -26,20 +27,22 @@ const TarjetaPersonaje: React.FC<TarjetaPersonajeProps> = ({ personaje }) => {
 
     const onToggleFavorito = () => {
 
-        if(esFavorito){
+        if (esFavorito) {
             dispatch(eliminarFav(personaje.id))
         } else {
             dispatch(agregarFav(personaje))
         }
-        
+
     }
 
     return (
         <div className="tarjeta-personaje">
-            <img src={personaje.image} alt={personaje.name} />
+            <Link to={`/detalle/${personaje.id}`}>
+                <img src={personaje.image} alt={personaje.name} />
+            </Link>
             <div className="tarjeta-personaje-body">
                 <span>{personaje.name}</span>
-                <BotonFavorito esFavorito={esFavorito} onClick={ onToggleFavorito } />
+                <BotonFavorito esFavorito={esFavorito} onClick={onToggleFavorito} />
             </div>
         </div>
     )

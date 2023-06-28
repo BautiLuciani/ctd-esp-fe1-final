@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import './tarjeta-episodio.css';
+import axios from 'axios';
 
 /**
  * Tarjeta para cada episodio dentro de la vista de personaje.
@@ -8,13 +10,44 @@ import './tarjeta-episodio.css';
  * 
  * @returns un JSX element 
  */
-const TarjetaEpisodio = () => {
+
+interface tarjetaEpisodio {
+    episode: string
+}
+
+interface IEpisodio {
+    name: string,
+    air_date: string,
+    episode: string
+}
+
+const TarjetaEpisodio: React.FC<tarjetaEpisodio> = ({episode}) => {
+
+    const [episodio, setEpisodio] = useState<IEpisodio>()
+
+    useEffect(() => {
+        const getPersonaje = async () => {
+            try {
+                const res = await axios.get(episode)
+                const datosEpisodio = res.data
+                setEpisodio(datosEpisodio)
+            } catch (error) {
+                console.log('Error al obtener los detalles del personaje: ', error)
+            }
+        }
+
+        getPersonaje()
+    }, [episode])    
+
+    if (!episodio) {
+        return <div>Cargando...</div>;
+    }
 
     return <div className="tarjeta-episodio">
-            <h4>Close Rick-counters of the Rick Kind</h4>
+            <h4>{episodio.name}</h4>
             <div>
-                <span>S01E01</span>
-                <span>Lanzado el: April 7, 2014</span>
+                <span>{episodio.episode}</span>
+                <span>Lanzado el: {episodio.episode}</span>
             </div>
     </div>
 }
