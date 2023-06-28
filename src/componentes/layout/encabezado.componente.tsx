@@ -8,6 +8,7 @@ import './encabezado.css';
  *
  * @returns {JSX.Element}
  */
+
 const Encabezado = () => {
 
     return <header>
