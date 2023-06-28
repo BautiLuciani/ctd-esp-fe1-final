@@ -9,6 +9,7 @@ interface InitialState {
     error: string | null
     pageNum: number
     filter: string
+    limpiarFiltro: boolean
 }
 
 const initialState: InitialState = {
@@ -22,7 +23,8 @@ const initialState: InitialState = {
     loading: false,
     error: null,
     pageNum: 1,
-    filter: ""
+    filter: "",
+    limpiarFiltro: false
 }
 
 export const getPersonajes = createAsyncThunk("personajes/getPersonajes", async({page,name}: {page: number, name?: string})=>{
@@ -49,8 +51,16 @@ const personajesSlice = createSlice({
                 state.pageNum += 1
             }
         },
+        setPage: (state) => {
+            state.pageNum = 1
+        },
         setFilter: (state, action: PayloadAction<string>) => {
             state.filter = action.payload
+            state.limpiarFiltro = false
+        },
+        cleanFilter: (state) => {
+            state.filter = ""
+            state.limpiarFiltro = true
         }
     },
     extraReducers: builder => {
@@ -72,6 +82,6 @@ const personajesSlice = createSlice({
     }
 })
 
-export const { prevPage, nextPage, setFilter } = personajesSlice.actions
+export const { prevPage, nextPage, setPage, setFilter, cleanFilter } = personajesSlice.actions
 
 export default personajesSlice.reducer
