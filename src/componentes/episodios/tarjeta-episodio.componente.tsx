@@ -6,8 +6,8 @@ import axios from 'axios';
  * Tarjeta para cada episodio dentro de la vista de personaje.
  * 
  * Deberás agregar las propiedades necesarias para mostrar los datos de los episodios
- * 
- * 
+ * @author Bautista Luciani
+ * @param {string} episode Contiene la url del episodio
  * @returns un JSX element 
  */
 

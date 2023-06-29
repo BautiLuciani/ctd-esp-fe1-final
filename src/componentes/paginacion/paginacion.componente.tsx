@@ -16,10 +16,20 @@ const Paginacion = () => {
     const pageNum = useAppSelector(state => state.characters.pageNum)
     const cantPages = useAppSelector(state => state.characters.pagination.pages)
 
+    /**
+    * Funcion que retrocede una pagina
+    * No requiere ningun parametro ni retorna nada
+    * @author Bautista Luciani
+    */
     const onAnterior = ()=>{
         dispatch(prevPage())
     }
 
+    /**
+    * Funcion que avanza una pagina
+    * No requiere ningun parametro ni retorna nada
+    * @author Bautista Luciani
+    */
     const onSiguiente = ()=>{
         dispatch(nextPage())
     }

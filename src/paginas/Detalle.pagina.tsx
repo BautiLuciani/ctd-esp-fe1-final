@@ -49,6 +49,11 @@ const PaginaDetalle: React.FC = () => {
         return <div>Cargando...</div>;
     }
 
+    /**
+    * Funcion que agrega o elimina personajes al arreglo de favoritos
+    * No requiere ningun parametro ni retorna nada
+    * @author Bautista Luciani
+    */
     const onToggleFavorito = () => {
 
         if (esFavorito) {
@@ -70,14 +75,14 @@ const PaginaDetalle: React.FC = () => {
                     <p>Planeta: {personaje.origin.name}</p>
                     <p>Genero: {personaje.gender}</p>
                 </div>
-                <BotonFavorito esFavorito={esFavorito} onClick={onToggleFavorito}/>
+                <BotonFavorito esFavorito={esFavorito} onClick={onToggleFavorito} />
             </div>
         </div>
         <h4>Lista de episodios donde apareció el personaje</h4>
         <div className={"episodios-grilla"}>
             {
                 personaje.episode.map(episode => (
-                    <TarjetaEpisodio key={episode} episode={episode}/>
+                    <TarjetaEpisodio key={episode} episode={episode} />
                 ))
             }
         </div>

@@ -10,7 +10,8 @@ import { Link } from 'react-router-dom';
  * 
  * Deberás agregar las propiedades necesarias para mostrar los datos de los personajes
  * 
- * 
+ * @author Bautista Luciani
+ * @param {IPersonajes} personaje Personaje de Rock y Morty
  * @returns un JSX element 
  */
 
@@ -25,6 +26,11 @@ const TarjetaPersonaje: React.FC<TarjetaPersonajeProps> = ({ personaje }) => {
 
     const esFavorito = favoritos.some(fav => fav.id === personaje.id)
 
+    /**
+    * Funcion que agrega o elimina personajes al arreglo de favoritos
+    * No requiere ningun parametro ni retorna nada
+    * @author Bautista Luciani
+    */
     const onToggleFavorito = () => {
 
         if (esFavorito) {

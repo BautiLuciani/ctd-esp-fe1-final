@@ -16,6 +16,13 @@ const Filtros: React.FC = () => {
       }
     }, [dispatch, sinFiltro])
 
+    /**
+     * Funcion que setea en el inputValue lo que el usuario escribe en el input
+     * Ademas setea en el filter el valor del inputValue
+     * No retorna nada
+     * @author Bautista Luciani
+     * @param {Event} e Almacena el valor de lo que esta escrito en el input
+     */
     const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>)=> {
         setInputValue(e.target.value)
         dispatch(setFilter(inputValue))

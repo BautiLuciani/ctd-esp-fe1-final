@@ -14,6 +14,12 @@ const PaginaFavoritos: React.FC = () => {
 
     const dispatch = useAppDispatch()
 
+    /**
+     * Funcion que limpia el arreglo de personajes favoritos
+     * El arreglo vuelve a su estado inicial ([])
+     * No requiere ningun parametro ni retorna nada
+     * @author Bautista Luciani
+     */
     const onCleanFav = ()=> {
         dispatch(limpiarFav())
     }

@@ -18,6 +18,12 @@ const PaginaInicio: React.FC = () => {
 
     const dispatch = useAppDispatch()
 
+    /**
+     * Funcion que limpia el valor del filtro
+     * Dentro del filtro se encuentra lo que el usuario esta buscando en el input
+     * No requiere ningun parametro ni retorna nada
+     * @author Bautista Luciani
+     */
     const onCleanFilter = ()=> {
         dispatch(cleanFilter())
     }
